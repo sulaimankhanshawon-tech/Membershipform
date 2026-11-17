@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>সদস্য ফরম – বন্ধু মহল কসবা পরিষদ (জগৎপুর)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--paper:#fff;--ink:#1d2a24;--green:#1b5a3e;--tint:#e9f1ec;--gold:#c09a40;--line:#8a9690;--muted:#5d6b64}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141b17;--paper:#1c2520;--ink:#e6efe9;--green:#7fc8a0;--tint:#25332b;--gold:#d3ad5a;--line:#5c6d63;--muted:#9baba2}}
+:root[data-theme="dark"]{--bg:#141b17;--paper:#1c2520;--ink:#e6efe9;--green:#7fc8a0;--tint:#25332b;--gold:#d3ad5a;--line:#5c6d63;--muted:#9baba2}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Bengali",system-ui,sans-serif;line-height:1.55}
+.sheet{max-width:794px;margin:0 auto;padding:12px}
+.paper{background:var(--paper);border:4px solid var(--green);border-radius:18px;padding:26px 22px 22px}
+header{text-align:center}
+h1{margin:0;color:var(--green);font-size:1.7rem;line-height:1.35;font-weight:700}
+.sub{margin:2px 0 0;color:var(--green);font-size:1.2rem;font-weight:700}
+.rule{height:4px;background:var(--gold);margin:10px auto 16px;width:82%;border-radius:3px}
+.sec{background:var(--tint);color:var(--green);font-weight:700;font-size:1.05rem;padding:6px 14px;border-radius:8px;border:1px solid rgba(27,90,62,.14);margin:14px 0 10px}
+.top{display:flex;gap:18px;align-items:flex-start;flex-direction:row-reverse}
+.fields{flex:1;min-width:0}
+.photo{flex:0 0 130px;width:130px;height:156px;border:2px solid var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.8rem;color:var(--muted);cursor:pointer;overflow:hidden;position:relative;padding:6px;margin-top:4px}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo:focus-within{outline:3px solid var(--gold)}
+.photo input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.f{display:flex;align-items:flex-end;gap:8px;margin-bottom:9px}
+.f.full{grid-column:1/-1}
+label{font-weight:700;font-size:.93rem;white-space:nowrap;padding-bottom:5px}
+input[type=text],input[type=tel],input[type=date],input[type=number],select{flex:1;min-width:0;width:100%;font:inherit;font-size:.95rem;color:var(--ink);background:transparent;border:0;border-bottom:1.5px solid var(--line);padding:5px 2px;border-radius:0}
+option{color:#1d2a24;background:#fff}
+input:focus,select:focus{outline:0;border-bottom-color:var(--green);box-shadow:0 2px 0 var(--green)}
+.note{font-size:.85rem;color:var(--muted);margin:-4px 0 10px 4px}
+.decl{font-size:.95rem;margin:4px 4px 0}
+.sign{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:40px;text-align:center;font-size:.88rem;font-weight:700}
+.sign div{border-top:1.5px solid var(--line);padding-top:4px}
+.panel{margin-top:22px;border:2px solid var(--green);border-radius:14px;background:var(--tint);padding:10px 10px 12px;text-align:center}
+.panel .gl{height:2px;background:var(--gold);width:76%;margin:0 auto 4px}
+.panel svg{width:200px;height:auto;display:block;margin:0 auto}
+.panel b{display:block;color:var(--green);font-size:1.35rem;line-height:1.3}
+.panel span{display:block;color:var(--green);font-size:.82rem;font-weight:600}
+.actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+button{font:inherit;font-weight:600;padding:12px 18px;border-radius:8px;border:1.5px solid var(--green);background:var(--green);color:#fff;cursor:pointer;flex:1}
+button.alt{background:transparent;color:var(--green)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media (max-width:560px){
+ .top{gap:10px}
+ .photo{flex-basis:96px;width:96px;height:124px;font-size:.72rem;margin-top:0}
+ .grid{grid-template-columns:1fr}
+ .f{flex-direction:column;align-items:stretch;gap:0}
+ label{padding-bottom:0;white-space:normal}
+ .sign{grid-template-columns:1fr;gap:30px}
+ h1{font-size:1.35rem}
+}
+</style>
+</head>
+<body>
+<div class="sheet"><div class="paper">
+<header>
+ <h1>বন্ধু মহল কসবা পরিষদ (জগৎপুর)</h1>
+ <div class="sub">সদস্য ফর্ম</div>
+ <div class="rule"></div>
+</header>
+
+<form id="f" onsubmit="return false">
+<div class="sec">সদস্যের ব্যক্তিগত তথ্য</div>
+<div class="top">
+ <div class="photo" id="ph"><span id="phTxt">পাসপোর্ট সাইজ<br>ছবি আপলোড করুন</span>
+  <input type="file" id="file" accept="image/*" aria-label="ছবি আপলোড করুন"></div>
+ <div class="fields">
+  <div class="f"><label for="nb">সদস্যের নাম (বাংলায়):</label><input type="text" id="nb"></div>
+  <div class="f"><label for="ne">সদস্যের নাম (ইংরেজিতে):</label><input type="text" id="ne"></div>
+  <div class="f"><label for="fa">পিতার নাম:</label><input type="text" id="fa"></div>
+  <div class="f"><label for="mo">মাতার নাম:</label><input type="text" id="mo"></div>
+ </div>
+</div>
+<div class="grid">
+ <div class="f"><label for="vi">গ্রাম:</label><input type="text" id="vi"></div>
+ <div class="f"><label for="po">ডাকঘর:</label><input type="text" id="po"></div>
+ <div class="f"><label for="un">ইউনিয়ন:</label><input type="text" id="un"></div>
+ <div class="f"><label for="up">উপজেলা/থানা:</label><input type="text" id="up"></div>
+ <div class="f"><label for="di">জেলা:</label><input type="text" id="di"></div>
+ <div class="f"><label for="dob">জন্ম তারিখ:</label><input type="date" id="dob"></div>
+ <div class="f full"><label for="nid">এনআইডি নম্বর/পাসপোর্ট নং:</label><input type="text" id="nid" inputmode="numeric"></div>
+ <div class="f"><label for="mob">মোবাইল নম্বর:</label><input type="tel" id="mob"></div>
+ <div class="f"><label for="sh">শেয়ারের পরিমাণ:</label><input type="number" id="sh" min="0" inputmode="numeric"></div>
+</div>
+<p class="note">প্রতি শেয়ারের মূল্য ১,০০০/- (এক হাজার) টাকা।</p>
+<div class="grid">
+ <div class="f"><label for="mey">মেয়াদ (সর্বোচ্চ ২৪ মাস):</label><select id="mey"><option value="">নির্বাচন করুন</option></select></div>
+ <div class="f"><label for="tot">মোট কত টাকা:</label><input type="text" id="tot"></div>
+</div>
+
+<div class="sec">নমিনি সংক্রান্ত তথ্য</div>
+<div class="grid">
+ <div class="f"><label for="n1">নমিনীর নাম:</label><input type="text" id="n1"></div>
+ <div class="f"><label for="n2">সম্পর্ক:</label><input type="text" id="n2"></div>
+ <div class="f"><label for="n3">পিতার নাম:</label><input type="text" id="n3"></div>
+ <div class="f"><label for="n4">মাতার নাম:</label><input type="text" id="n4"></div>
+ <div class="f"><label for="n5">এনআইডি নম্বর:</label><input type="text" id="n5" inputmode="numeric"></div>
+ <div class="f"><label for="n6">মোবাইল নম্বর:</label><input type="tel" id="n6"></div>
+</div>
+
+<div class="sec">ঘোষণাপত্র</div>
+<p class="decl">আমি এই মর্মে ঘোষণা করছি যে, উপরে প্রদত্ত সকল তথ্য সঠিক। প্রকল্পের সকল নিয়ম-কানুন মেনে চলতে সম্মত আছি।</p>
+<div class="sign"><div>সদস্যের স্বাক্ষর</div><div>সভাপতির স্বাক্ষর</div><div>সাধারণ সম্পাদকের স্বাক্ষর</div></div>
+
+
+<div class="actions">
+ <button type="button" id="dl">ছবি হিসেবে ডাউনলোড</button>
+ <button type="button" class="alt" id="clr">ফরম মুছুন</button>
+</div>
+</form>
+</div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+(function(){
+ var bn="০১২৩৪৫৬৭৮৯";
+ function toBn(n){return String(n).replace(/\d/g,function(d){return bn[d]})}
+ var tot=document.getElementById('tot');
+ var mey=document.getElementById('mey');
+ for(var m=1;m<=24;m++){var o=document.createElement('option');o.value=m;o.textContent=toBn(m)+' মাস';mey.appendChild(o);}
+ var file=document.getElementById('file'),ph=document.getElementById('ph'),txt=document.getElementById('phTxt');
+ file.addEventListener('change',function(){
+  var f=file.files&&file.files[0];if(!f)return;
+  var old=ph.querySelector('img');if(old)old.remove();
+  var img=new Image();img.alt='সদস্যের ছবি';
+  img.src=URL.createObjectURL(f);
+  ph.appendChild(img);txt.style.display='none';
+ });
+ var dl=document.getElementById('dl');
+ dl.addEventListener('click',function(){
+  if(typeof html2canvas==='undefined'){alert('ইন্টারনেট সংযোগ দিয়ে আবার চেষ্টা করুন');return;}
+  var old=dl.textContent;dl.textContent='তৈরি হচ্ছে...';dl.disabled=true;
+  var done=function(){dl.textContent=old;dl.disabled=false;};
+  var go=function(){
+   html2canvas(document.querySelector('.paper'),{scale:2,backgroundColor:'#ffffff',useCORS:true,windowWidth:820,
+    ignoreElements:function(e){return e.classList&&e.classList.contains('actions');},
+    onclone:function(d){var pp=d.querySelector('.paper');pp.style.width='794px';pp.style.margin='0';d.documentElement.setAttribute('data-theme','light');d.body.style.background='#fff';}
+   }).then(function(c){
+    c.toBlob(function(b){
+     var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='member-form.png';
+     document.body.appendChild(a);a.click();a.remove();done();
+    },'image/png');
+   }).catch(function(){done();alert('ছবি তৈরি করা যায়নি, আবার চেষ্টা করুন');});
+  };
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(go);
+ });
+ document.getElementById('clr').addEventListener('click',function(){
+  if(!confirm('সব তথ্য মুছে ফেলবেন?'))return;
+  document.getElementById('f').reset();
+  var i=ph.querySelector('img');if(i)i.remove();txt.style.display='';
+ });
+})();
+</script>
+</body>
+</html>
